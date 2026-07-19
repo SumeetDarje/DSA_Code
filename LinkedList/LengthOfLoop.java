@@ -1,4 +1,3 @@
-/*
 class Node {
     int data;
     Node next;
@@ -8,7 +7,6 @@ class Node {
         next = null;
     }
 }
-*/
 
 class Solution {
     public int lengthOfLoop(Node head) {
