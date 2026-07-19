@@ -1,3 +1,23 @@
+// Given the head of a singly linked list, determine whether the linked list contains a loop (cycle). If a loop exists, 
+// return the length of the loop (i.e., the number of nodes that form the cycle). If no loop is present, return 0.
+
+// A loop occurs when the last node of the linked list points back to a previous node instead of pointing to null.
+
+// Example 1
+// Input
+// 10 → 20 → 30 → 40 → 50
+//            ↑         ↓
+//            └─────────┘
+// Output
+// 3
+// Explanation
+
+// The loop consists of the nodes:
+
+// 30 → 40 → 50 → 30
+
+// Hence, the length of the loop is 3.
+
 class Node {
     int data;
     Node next;
