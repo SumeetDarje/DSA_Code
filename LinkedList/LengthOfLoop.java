@@ -9,31 +9,67 @@ class Node {
 }
 
 class Solution {
+
     public int lengthOfLoop(Node head) {
-        // code here
-        if (head == null){
+
+        if (head == null) {
             return 0;
         }
-      
+
         Node slow = head;
         Node fast = head;
-        
-        
-        while(fast!=null && fast.next!=null){
+
+        // Detect Loop using Floyd's Cycle Detection Algorithm
+        while (fast != null && fast.next != null) {
+
             slow = slow.next;
             fast = fast.next.next;
-            
-            if(slow == fast){
-                int cnt = 1;
+
+            // Loop found
+            if (slow == fast) {
+
+                int count = 1;
                 Node temp = slow.next;
-                
-                while(temp != slow){
-                    cnt++;
+
+                while (temp != slow) {
+                    count++;
                     temp = temp.next;
                 }
-                return cnt;
+
+                return count;
             }
         }
+
+        // No loop found
         return 0;
+    }
+}
+
+public class Main {
+
+    public static void main(String[] args) {
+
+        // Create Nodes
+        Node head = new Node(10);
+        Node second = new Node(20);
+        Node third = new Node(30);
+        Node fourth = new Node(40);
+        Node fifth = new Node(50);
+
+        // Connect Nodes
+        head.next = second;
+        second.next = third;
+        third.next = fourth;
+        fourth.next = fifth;
+
+        // Create Loop
+        // 50 -> 30
+        fifth.next = third;
+
+        Solution obj = new Solution();
+
+        int length = obj.lengthOfLoop(head);
+
+        System.out.println("Length of Loop = " + length);
     }
 }
